@@ -7,17 +7,19 @@ describe('Airport', function() {
   beforeEach(function() {
     airport = new Airport();
     plane = new Plane();
-    // hanger = [];
-    // airport.isStormy = function () { return true };
   });
 
-  it('confirms weather is stormy', function() {
-    spyOn(airport, 'weatherGenerator').and.returnValue(true)
-    // console.log(airport.weatherGenerator())
-    // console.log(airport.weatherGenerator())
-    // console.log(airport.weatherGenerator())
-    // console.log(weatherGenerator)
-    expect(airport.isStormy(airport.weatherGenerator())).toBe(true)
+  it('returns true if the weather is stormy', function() {
+    //Would like to double the weather class instead of creating an instance
+    var weather = new Weather();
+    spyOn(weather,'generator').and.returnValue(true);
+    expect(airport.isStormy(weather)).toEqual(true);
+  });
+
+  it('returns false if the weather is not stormy', function() {
+    var weather = new Weather();
+    spyOn(weather,'generator').and.returnValue(false);
+    expect(airport.isStormy(new Weather())).toEqual(false);
   });
 
   it('planes can be instructed to land at the airport', function() {

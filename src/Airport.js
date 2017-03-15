@@ -2,8 +2,6 @@ Airport = function() {
   this.hanger = [];
 };
 
-
-
 var Plane = function() {};
 // var hanger = []
 var plane = new Plane();
@@ -16,11 +14,11 @@ Airport.prototype.landPlane = function(plane) {
 
 Airport.prototype.takeOff = function() {
   this.hanger.pop();
-  return hanger;
+  return this.hanger;
 };
 
 Airport.prototype.availablePlane = function() {
-  if (hanger.length > 0) {
+  if (this.hanger.length > 0) {
     return true;
   }
   else {
@@ -28,10 +26,6 @@ Airport.prototype.availablePlane = function() {
   }
 };
 
-Airport.prototype.weatherGenerator = function () {
-  return Math.random() > 0.2;
-};
-
-Airport.prototype.isStormy = function(weatherGenerator) {
-  return weatherGenerator
+Airport.prototype.isStormy = function(weather) {
+  return weather.generator();
 };
